@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom'
 export default function Leagues() {
     const { tournaments } = useApi()
     
-    console.log(tournaments)
-
     return (
         <main  className='leagues-wrapper'>
             <List 
