@@ -1,8 +1,9 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
+  useHistory,
 } from 'react-router-dom'
 
 import LeaguesContainer from '../contaners/leagues.containers'
@@ -10,8 +11,10 @@ import MatchesContainer from '../contaners/matches.containers'
 import MatchContainer from '../contaners/match.containers'
 
 export default function Routes() {
+  const history = useHistory()
+
   return (
-    <Router>
+    <Router history={history} >
       <div>
         <Switch>
           <Route path='/' exact>

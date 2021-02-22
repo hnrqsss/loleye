@@ -1,4 +1,5 @@
 import { Layout } from 'antd'
+import { HashRouter } from 'react-router-dom'
 import './App.scss'
 import ApiProvider from './context/ApiContext'
 import Routes from './routes'
@@ -13,7 +14,9 @@ function App() {
             <Content style={{ padding: '30px 30px', minHeight: 'calc(100vh - 134px)'}}>
               <main className='App'>
                 <ApiProvider>
-                  <Routes />
+                  <HashRouter>
+                    <Routes />
+                  </HashRouter>
                 </ApiProvider>
               </main>
             </Content>
