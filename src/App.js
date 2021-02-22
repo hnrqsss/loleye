@@ -1,10 +1,13 @@
 import './App.scss'
+import ApiProvider from './context/ApiContext'
 import Routes from './routes'
 
 function App() {
   return (
     <main className='App'>
-      <Routes />
+      <ApiProvider>
+        <Routes />
+      </ApiProvider>
     </main>
   )
 }
