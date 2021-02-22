@@ -16,7 +16,7 @@ export default function Routes() {
           <Route path='/' exact>
             <LeaguesContainer />
           </Route>
-          <Route path='/partidas'>
+          <Route path='/partidas/:id'>
             <MatchesContainer />
           </Route>
         </Switch>

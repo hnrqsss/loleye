@@ -1,18 +1,17 @@
 import React from 'react'
 
 import useApi from '../hooks/useApi'
+import Leagues from '../Pages/Leagues'
 
 export default function LeaguesContainer() {
     
-    const { tournaments, fetchTournaments } = useApi()
+    const { fetchTournaments } = useApi()
     
     React.useEffect(() => {
         fetchTournaments({})
     }, [fetchTournaments])
     
     return (
-        <div>
-            <p>leagues</p>
-        </div>
+        <Leagues  />
     )
 }
