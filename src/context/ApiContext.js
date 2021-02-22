@@ -8,11 +8,12 @@ export const ApiContext = React.createContext({
     selectedMatch: null,
     error: null,
     isLoading: false,
-
+    standings: [],
     fetchTournaments: () => {},
     fetchTournament: () => {},
     fetchMatches: () => {},
     fetchMatch: () => {},
+    fetchStandings: () => {},
     setError: () => {},
 })
 
@@ -24,9 +25,11 @@ export default function ApiProvider({ children }) {
     
     const [matches, setMatches] = React.useState([])
     const [selectedMatch, setSelectedMatch] = React.useState(null)
+    const [standings, setStandings] = React.useState([])
 
     const [error, setError] = React.useState(null)
     const [isLoading, setIsloading] = React.useState(false)
+
 
     const fetchTournaments = React.useCallback(async ({
         param = '',
@@ -67,6 +70,22 @@ export default function ApiProvider({ children }) {
             setIsloading(false)
         }
     }, [setError, setSelectedTournament, setIsloading])
+    
+    const fetchStandings = React.useCallback(async (id) => {
+        try {
+            setIsloading(true)
+            let base_url = `tournaments/${id}/standings`
+
+            const { data } = await api.get(base_url)
+
+            setStandings(data)
+
+            setIsloading(false)
+        } catch(err) {
+            setError(err.message)
+            setIsloading(false)
+        }
+    }, [setError, setStandings, setIsloading])
 
     const fetchMatches = React.useCallback(async (league_id) => {
         try {
@@ -108,12 +127,14 @@ export default function ApiProvider({ children }) {
                 matches,
                 selectedMatch,
                 isLoading,
+                standings,
                 error,
 
                 fetchTournaments,
                 fetchTournament,
                 fetchMatches,
                 fetchMatch,
+                fetchStandings,
                 setError,
             }}
         >

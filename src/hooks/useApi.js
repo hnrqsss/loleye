@@ -8,12 +8,14 @@ export default function useApi() {
         matches,
         selectedMatch,
         isLoading,
+        standings,
         error,
 
         fetchTournaments,
         fetchTournament,
         fetchMatches,
         fetchMatch,
+        fetchStandings,
         setError,
     } = React.useContext(ApiContext)
     
@@ -23,12 +25,14 @@ export default function useApi() {
         matches,
         selectedMatch,
         isLoading,
+        standings,
         error,
 
         fetchTournaments,
         fetchTournament,
         fetchMatches,
         fetchMatch,
+        fetchStandings,
         setError,
     }
 }

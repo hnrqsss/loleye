@@ -19,7 +19,7 @@ export default function Leagues() {
                     sm: 2,
                     md: 4,
                     lg: 4,
-                    xl: 8,
+                    xl: 6,
                     xxl: 4,
                 }}
                 renderItem={item => (

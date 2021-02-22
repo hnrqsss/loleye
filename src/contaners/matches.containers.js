@@ -5,17 +5,17 @@ import Matches from '../Pages/Matches'
 
 export default function MatchesContainer() {
     const route = useRouteMatch()
-    const { selectedTournament: tournament, fetchTournament, fetchMatches } = useApi()
+    const { selectedTournament: tournament, fetchTournament, fetchMatches, fetchStandings } = useApi()
 
     React.useEffect(() => {
         
         if (route?.params) {
             const { id } = route.params
-
             fetchTournament(id)
+            fetchStandings(id)
         }
 
-    }, [route, fetchTournament])
+    }, [route, fetchTournament, fetchStandings])
 
 
     React.useEffect(() => {

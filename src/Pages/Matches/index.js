@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Row,  List, Collapse, Button } from 'antd'
+import { Col, Row,  List, Collapse, Button, Table } from 'antd'
 import useApi from '../../hooks/useApi'
 
 import './matches.scss'
@@ -8,18 +8,19 @@ import { Link } from 'react-router-dom'
 const { Panel } = Collapse
 
 export default function Matches() {
-    const { selectedTournament: tournament, matches } = useApi()
+    const { selectedTournament: tournament, matches, standings } = useApi()
 
     return (
         <main className='matches-wrapper'>
             <Row>
-                <Col span={8} offset={8}>
+                <Col xl={8} xs={0}/>
+                <Col xl={8} xs={24}>
                     <img className='matches-main-image' src={tournament?.league?.image_url} alt={tournament?.id} />
                     <h2>{tournament?.league?.name}</h2>
                 </Col>
             </Row>
             <Row>
-                <Col span={12}>
+                <Col xl={12} xs={24}>
                     <List 
                         dataSource={matches}
                         renderItem={item => {
@@ -55,7 +56,37 @@ export default function Matches() {
                             )}}
                     />
                 </Col>
-                <Col span={12}></Col>
+                <Col xl={12} xs={24}>
+                    <Table
+                        className='standings-table'
+                        columns={[
+                            {
+                                title: 'Time',
+                                dataIndex: 'team',
+                                render: item => <img src={item?.image_url} alt={item?.name}/>,
+                                key: 'team'
+                            },
+                            {
+                                title: 'Jogos',
+                                dataIndex: 'total',
+                                key: 'total'
+                            },
+                            {
+                                title: 'Vitórias',
+                                dataIndex: 'wins',
+                                key: 'wins'
+                            },
+                            {
+                                title: 'Derrotas',
+                                dataIndex: 'losses',
+                                key: 'losses'
+                            },
+
+                        ]}
+                        dataSource={standings}
+                        pagination={false}
+                    />
+                </Col>
             </Row>
         </main>
     )
