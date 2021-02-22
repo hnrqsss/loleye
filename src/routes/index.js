@@ -7,6 +7,7 @@ import {
 
 import LeaguesContainer from '../contaners/leagues.containers'
 import MatchesContainer from '../contaners/matches.containers'
+import MatchContainer from '../contaners/match.containers'
 
 export default function Routes() {
   return (
@@ -18,6 +19,9 @@ export default function Routes() {
           </Route>
           <Route path='/partidas/:id'>
             <MatchesContainer />
+          </Route>
+          <Route path='/partida/:id'>
+            <MatchContainer />
           </Route>
         </Switch>
       </div>

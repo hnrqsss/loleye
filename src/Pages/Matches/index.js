@@ -20,40 +20,40 @@ export default function Matches() {
             </Row>
             <Row>
                 <Col span={12}>
-                        <List 
-                            dataSource={matches}
-                            renderItem={item => {
-                                const date = !item?.rescheduled 
-                                    ? new Date(item?.original_scheduled_at) 
-                                    : new Date(item?.scheduled_at)
-                                return(
-                                    <Collapse collapsible="header" defaultActiveKey={['1']}>
-                                        <Panel header={`
-                                            ${item?.opponents[0]?.opponent?.name} 
-                                                VS 
-                                            ${item?.opponents[1]?.opponent?.name} 
-                                            - MD${item?.number_of_games} 
-                                            - ${date.toLocaleDateString('pt-BR')}
-                                        `} 
-                                        key={item?.id}
-                                        >
-                                            
-                                            <Row>
-                                                <Col span={12}>
-                                                    <Link to={`/partida/${item?.id}`} >Estatísticas</Link>
-                                                </Col>
-                                                <Col span={12}>
-                                                    <div className='info-match'>
-                                                        <Button target='_blank' href={item?.official_stream_url} type={'link'} >
-                                                            Assistir
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
-                                        </Panel>
-                                    </Collapse>
-                                )}}
-                        />
+                    <List 
+                        dataSource={matches}
+                        renderItem={item => {
+                            const date = !item?.rescheduled 
+                                ? new Date(item?.original_scheduled_at) 
+                                : new Date(item?.scheduled_at)
+                            return(
+                                <Collapse collapsible="header" defaultActiveKey={['1']}>
+                                    <Panel header={`
+                                        ${item?.opponents[0]?.opponent?.name} 
+                                            VS 
+                                        ${item?.opponents[1]?.opponent?.name} 
+                                        - MD${item?.number_of_games} 
+                                        - ${date.toLocaleDateString('pt-BR')}
+                                    `} 
+                                    key={item?.id}
+                                    >
+                                        
+                                        <Row>
+                                            <Col span={12}>
+                                                <Link to={`/partida/${item?.id}`} >Estatísticas</Link>
+                                            </Col>
+                                            <Col span={12}>
+                                                <div className='info-match'>
+                                                    <Button target='_blank' href={item?.official_stream_url} type={'link'} >
+                                                        Assistir
+                                                    </Button>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </Panel>
+                                </Collapse>
+                            )}}
+                    />
                 </Col>
                 <Col span={12}></Col>
             </Row>
